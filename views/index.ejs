@@ -13,7 +13,6 @@
 			crossorigin="anonymous"
 		/>
 
-		<link rel="stylesheet" href="/public/main.css" />
 		<title>Hello, world!</title>
 	</head>
 
@@ -21,54 +20,14 @@
 		<!-- nav.html을 첨부 -->
 		<%-include('nav.html') %>
 
-		<h4 class="ml-2 my-3 text-center">서버에서 가져온 할일 리스트</h4>
-		<!-- <% for(var i=0; i < posts.length ; i++) { %>
-    <h4>할일 제목 : <%= posts[i].title  %> </h4>
-    <p>할일 마감날짜 : <%= posts[i].date %> </p>
-    <button>삭제</button>
-    <% } %> -->
-		<div class="container">
-			<ul class="list-group">
-				<% for(var i=0; i < posts.length ; i++) { %>
-				<li class="list-group-item">
-					<p>글번호 : <%= posts[i]._id %></p>
-					<h4>할일 제목 : <%= posts[i].title %></h4>
-					<p>할일 마감날짜 : <%= posts[i].date %></p>
-					<button class="btn btn-danger delete" data-id="<%= posts[i]._id %>">삭제</button>
-				</li>
-				<% } %>
-			</ul>
-		</div>
-
-		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-		<script>
-			$('.delete').click(e => {
-				var boardNum = e.target.dataset.id;
-				var focusBtn = $(e.target);
-				$.ajax({
-					method: 'DELETE', //요청할 방식
-					url: '/delete', //요청할경로
-					data: {_id: boardNum}, //요청과 함께 보낼데이터
-				})
-					.done(result => {
-						// AJAX 성공시 실행할 코드
-						// 페이지를 강제로 새로고침? 삭제버튼을 누른 <li> 요소를 제거
-						console.log('성공했슴당.');
-						console.log($(e));
-						focusBtn.parent('li').fadeOut();
-					})
-					.fail(err => {
-						// 실패시에 작성할 코드
-						console.log(err);
-						alert('요청이 실패되었습니다.');
-					});
-			});
-		</script>
-
 		<!-- Optional JavaScript; choose one of the two! -->
 
 		<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-
+		<script
+			src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
